@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+{% block content %}
+
+{% include "query.html" %}
+
+    <button><a href="{% url 'c_cursos' %}">Crear Curso</a></button>
+    {% if cursos %}
+    <h1>Este es el contenido de los cursos</h1>
+    <table>
+        <thead>
+            <td>ID</td>
+            <td>Nombre</td>
+            <td>Descripcion</td>
+            <td>Creditos</td> 
+            <td>Profesor</td> 
+        </thead>
+        {% for i in cursos %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td><a href = {% url 'u_cursos' i.id %}>{{i.name}}</a></td>
+            <td>{{i.description}}</td>
+            <td>{{i.credits}}</td>
+            <td>{{i.teacher.name}}</td>  
+        </tr>
+        {% endfor %}
+
+    </table>
+    {% else %}
+    <h1>Porfavor ingrese la carrera</h1>
+    {% endif %}
+
+
+</body>
+</html>
+{% endblock  %}

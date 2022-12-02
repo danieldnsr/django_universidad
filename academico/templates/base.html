@@ -1,0 +1,31 @@
+<title>Universidad</title>
+<div>
+    <ul style="width:100%; margin: auto; background-color: gray; color: aliceblue;">
+        <li style="display: inline-table;">
+            UNIVERSIDAD
+        </li>
+        <li style="display: inline-table;">
+            {{fecha|date:'Y-m-d H:i'}}
+        </li>
+    </ul>
+</div>
+
+<div>
+    <table style="width: 100%;">
+        <td style="width: 20%;">
+        <navbar>
+            {% for i in menu %}
+            
+            <a href="{% url i|lower %}"><button>{{i}}</button></a>
+            
+            <ul>
+                
+            </ul>
+            {% endfor %}
+        </navbar>
+        </td>
+        <td style="width: 80%";>
+            {% block content %} {% endblock %}
+        </td>
+    </table>
+</div>
